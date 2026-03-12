@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shenzhen PrimeSol Supply Chain Co., Ltd.</title>
+    <style id="dynamicStyle">
+        /* 动态样式会在这里生成 */
+    </style>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 导航栏样式 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 999;
+            padding: 0 50px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--main-color);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 15px;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        .lang-switch button.active {
+            color: var(--main-color);
+            font-weight: bold;
+            border-bottom: 2px solid var(--main-color);
+        }
+
+        /* Banner样式 */
+        .banner {
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .banner-content h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .banner-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--main-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #1e70d8;
+        }
+
+        /* 轨迹查询模块 - 调整样式，适配Banner下方位置 */
+        .tracking {
+            padding: 80px 50px;
+            background: white;
+            margin-top: 0;
+        }
+
+        .tracking-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #f5f7fa;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .tracking-form {
+            display: flex;
+            gap: 15px;
+        }
+
+        .tracking-form input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .tracking-form button {
+            padding: 0 30px;
+            background: var(--main-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* 核心服务模块 */
+        .services {
+            padding: 80px 50px;
+            background: #f8f9fa;
+            margin-top: 0;
+        }
+
+        /* 关于我们模块 - 修复自动换行问题 */
+        .about {
+            padding: 80px 50px;
+            background: white;
+            margin-top: 0;
+        }
+        #aboutContent {
+            max-width: 1000px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #666;
+            word-wrap: break-word;
+            white-space: pre-line;
+            word-break: break-all;
+        }
+
+        /* 通用板块标题样式 */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 服务卡片样式 */
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card img {
+            width: 280px;
+            height: 160px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: var(--main-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* 联系我们模块 */
+        .contact {
+            padding: 80px 50px;
+            background: #f8f9fa;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item i {
+            font-size: 20px;
+            color: var(--main-color);
+            margin-top: 5px;
+        }
+
+        .contact-item h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .contact-item p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        /* 底部样式 */
+        .footer {
+            background: #333;
+            color: #999;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .copyright {
+            font-size: 12px;
+        }
+
+        /* 轨迹查询结果样式 */
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .loading span {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--main-color);
+            margin: 0 5px;
+            animation: loading 1s infinite ease-in-out;
+        }
+
+        @keyframes loading {
+            0%, 100% { transform: scale(0); }
+            50% { transform: scale(1); }
+        }
+
+        .empty-result {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+        }
+
+        .track-result {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .result-header {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .tracking-no {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #e8f4fd;
+            color: var(--main-color);
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--main-color);
+        }
+
+        .timeline-item.active::before {
+            background: #00cc66;
+        }
+
+        .timeline-item .time {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .desc {
+            font-size: 14px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 20px;
+            }
+            .nav-menu {
+                display: none;
+            }
+            .logo-text {
+                font-size: 16px;
+            }
+            .banner {
+                height: 400px;
+            }
+            .banner-content h1 {
+                font-size: 28px;
+            }
+            /* 响应式调整各板块内边距 */
+            .tracking, .services, .about, .contact {
+                padding: 40px 20px;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .tracking-form {
+                flex-direction: column;
+            }
+            .service-card img {
+                width: 100%;
+                height: auto;
+                max-height: 160px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img id="siteLogo" class="logo-img" src="" alt="LOGO" style="display: none;">
+                <a href="#" class="logo-text" id="companyName">PrimeSol Supply Chain</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" id="navHome">Home</a></li>
+                <li><a href="#tracking" id="navTracking">Track Shipment</a></li>
+                <li><a href="#services" id="navServices">Core Services</a></li>
+                <li><a href="#about" id="navAbout">About Us</a></li>
+                <li><a href="#contact" id="navContact">Contact Us</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button id="btnZh" onclick="switchLang('zh')">中文</button>
+                <button id="btnEn" class="active" onclick="switchLang('en')">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner区域 -->
+    <section class="banner" id="home">
+        <div class="banner-content">
+            <h1 id="bannerTitle">Global Supply Chain Solutions Provider</h1>
+            <p id="bannerSubtitle">Specializing in international logistics, sea freight, air freight, cross-border e-commerce logistics and other one-stop supply chain services to escort your global trade</p>
+            <a href="#contact" class="btn" id="bannerBtn">Contact Us Now</a>
+        </div>
+    </section>
+
+    <!-- 轨迹查询（移到Banner下方） -->
+    <section class="tracking" id="tracking">
+        <div class="section-title">
+            <h2 id="trackingTitle">Shipment Tracking</h2>
+            <p id="trackingSubtitle">Enter your tracking number to check the real-time status of your shipment</p>
+        </div>
+        <div class="tracking-card">
+            <form class="tracking-form" onsubmit="trackShipment(event)">
+                <input type="text" id="waybillNo" placeholder="Enter tracking number" required>
+                <button type="submit" class="btn" id="trackBtn">Track</button>
+            </form>
+            <div class="loading" id="loading">
+                <span></span><span></span><span></span>
+                <p id="loadingText">Searching...</p>
+            </div>
+            <div class="empty-result" id="emptyResult">
+                <p id="emptyText">No tracking record found</p>
+            </div>
+            <div class="track-result" id="trackResult">
+                <div class="result-header">
+                    <div class="tracking-no" id="resultWaybillNo"></div>
+                    <span class="status-badge" id="resultStatus"></span>
+                </div>
+                <div class="timeline" id="timelineContainer"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心服务（移到轨迹查询下方） -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2 id="servicesTitle">Core Services</h2>
+            <p id="servicesSubtitle">We provide comprehensive supply chain solutions to meet your different logistics needs</p>
+        </div>
+        <div class="service-cards" id="serviceCards">
+            <!-- 动态生成服务卡片 -->
+        </div>
+    </section>
+
+    <!-- 关于我们（移到核心服务下方） -->
+    <section class="about" id="about">
+        <div class="section-title">
+            <h2 id="aboutTitle">About Us</h2>
+            <p id="aboutDesc">Shenzhen PrimeSol Supply Chain Co., Ltd. is a professional global supply chain solutions provider</p>
+        </div>
+        <div id="aboutContent">
+            Founded in 2010 and headquartered in Shenzhen, we have branches in many countries and regions around the world. We have a professional logistics team and a complete service network.
+            <br>
+            With years of industry experience, we provide customized logistics solutions for customers, covering international sea freight, air freight, express, cross-border e-commerce logistics and other full-link services.
+            <br>
+            We always adhere to the concept of "Customer First, Service-Oriented", committed to reducing logistics costs and improving logistics efficiency for customers.
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2 id="contactTitle">Contact Us</h2>
+            <p id="contactSubtitle">If you have any questions or needs, please feel free to contact us</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4 id="addressLabel">Company Address</h4>
+                        <p id="contactAddress">Shenzhen Bao'an District, Fuyong Street, Fuwai Community, Xiasha 11th Lane 12</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4 id="phoneLabel">Phone Number</h4>
+                        <p id="contactPhone">0755-12345678<br>13800138000</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4 id="emailLabel">Email Address</h4>
+                        <p id="contactEmail">info@primesol-supplychain.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <input type="text" placeholder="Your Name" id="namePlaceholder">
+                <input type="tel" placeholder="Your Phone" id="telPlaceholder">
+                <input type="email" placeholder="Your Email" id="emailPlaceholder">
+                <textarea rows="5" placeholder="Your Message" id="messagePlaceholder"></textarea>
+                <button class="btn" style="width: 100%;" id="submitBtn">Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#home" id="footerHome">Home</a>
+            <a href="#tracking" id="footerTracking">Track Shipment</a>
+            <a href="#services" id="footerServices">Core Services</a>
+            <a href="#about" id="footerAbout">About Us</a>
+            <a href="#contact" id="footerContact">Contact Us</a>
+        </div>
+        <div class="copyright" id="copyrightText">
+            © 2026 Shenzhen PrimeSol Supply Chain Co., Ltd. All Rights Reserved | 粤ICP备12345678号
+        </div>
+    </footer>
+
+    <script>
+        // 全局变量
+        let currentLang = 'en';
+        let siteConfig = {
+            companyNameZh: 'PrimeSol Supply Chain',
+            companyNameEn: 'PrimeSol Supply Chain',
+            mainFontColor: '#2f80ed',
+            fontFamily: 'Microsoft Yahei, Arial, sans-serif',
+            icpNumber: '粤ICP备12345678号',
+            serviceTitleZh: '核心服务',
+            serviceTitleEn: 'Core Services',
+            serviceSubtitleZh: '我们提供全方位的供应链解决方案，满足您不同的物流需求',
+            serviceSubtitleEn: 'We provide comprehensive supply chain solutions to meet your different logistics needs'
+        };
+        
+        // 语言包
+        const lang = {
+            zh: {
+                nav_home: "首页",
+                nav_tracking: "轨迹查询",
+                nav_services: "核心服务",
+                nav_about: "关于我们",
+                nav_contact: "联系我们",
+                bannerTitle: "全球供应链解决方案服务商",
+                bannerSubtitle: "专注于国际物流、海运、空运、跨境电商物流等一站式供应链服务，为您的全球贸易保驾护航",
+                bannerBtn: "立即咨询",
+                aboutTitle: "关于我们",
+                servicesTitle: "核心服务",
+                servicesSubtitle: "我们提供全方位的供应链解决方案，满足您不同的物流需求",
+                trackingTitle: "物流轨迹查询",
+                trackingSubtitle: "输入您的运单号，实时查询货物物流状态",
+                trackPlaceholder: "请输入运单号",
+                trackBtn: "查询",
+                loadingText: "正在查询...",
+                emptyText: "未查询到该运单号信息",
+                contactTitle: "联系我们",
+                contactSubtitle: "如有任何问题或需求，欢迎随时联系我们",
+                addressLabel: "公司地址",
+                phoneLabel: "联系电话",
+                emailLabel: "电子邮箱",
+                namePlaceholder: "您的姓名",
+                telPlaceholder: "您的电话",
+                emailPlaceholder: "您的邮箱",
+                messagePlaceholder: "您的需求",
+                submitBtn: "提交",
+                copyrightPrefix: "© 2026 Shenzhen PrimeSol Supply Chain Co., Ltd. 版权所有 | "
+            },
+            en: {
+                nav_home: "Home",
+                nav_tracking: "Track Shipment",
+                nav_services: "Core Services",
+                nav_about: "About Us",
+                nav_contact: "Contact Us",
+                bannerTitle: "Global Supply Chain Solutions Provider",
+                bannerSubtitle: "Specializing in international logistics, sea freight, air freight, cross-border e-commerce logistics and other one-stop supply chain services to escort your global trade",
+                bannerBtn: "Contact Us Now",
+                aboutTitle: "About Us",
+                servicesTitle: "Core Services",
+                servicesSubtitle: "We provide comprehensive supply chain solutions to meet your different logistics needs",
+                trackingTitle: "Shipment Tracking",
+                trackingSubtitle: "Enter your tracking number to check the real-time status of your shipment",
+                trackPlaceholder: "Enter tracking number",
+                trackBtn: "Track",
+                loadingText: "Searching...",
+                emptyText: "No tracking record found",
+                contactTitle: "Contact Us",
+                contactSubtitle: "If you have any questions or needs, please feel free to contact us",
+                addressLabel: "Company Address",
+                phoneLabel: "Phone Number",
+                emailLabel: "Email Address",
+                namePlaceholder: "Your Name",
+                telPlaceholder: "Your Phone",
+                emailPlaceholder: "Your Email",
+                messagePlaceholder: "Your Message",
+                submitBtn: "Submit",
+                copyrightPrefix: "© 2026 Shenzhen PrimeSol Supply Chain Co., Ltd. All Rights Reserved | "
+            }
+        };
+
+        // 存储键名
+        const STORAGE_KEYS = {
+            tracks: 'primeSolTracks',
+            services: 'primeSolServices',
+            contact: 'primeSolContact',
+            about: 'primeSolAbout',
+            banner: 'primeSolBanner',
+            logo: 'primeSolLogo',
+            siteConfig: 'primeSolSiteConfig',
+            messages: 'primeSolMessages'
+        };
+
+        // 工具函数
+        function getStoredData(key) {
+            try {
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : (key === STORAGE_KEYS.tracks ? {} : key === STORAGE_KEYS.services ? [] : (key === STORAGE_KEYS.messages ? [] : {}));
+            } catch (e) {
+                console.error('读取数据失败:', e);
+                return key === STORAGE_KEYS.tracks ? {} : key === STORAGE_KEYS.services ? [] : (key === STORAGE_KEYS.messages ? [] : {});
+            }
+        }
+
+        // 加载网站配置
+        function loadSiteConfig() {
+            const config = getStoredData(STORAGE_KEYS.siteConfig);
+            siteConfig = {
+                companyNameZh: config.companyNameZh || siteConfig.companyNameZh,
+                companyNameEn: config.companyNameEn || siteConfig.companyNameEn,
+                mainFontColor: config.mainFontColor || siteConfig.mainFontColor,
+                fontFamily: config.fontFamily || siteConfig.fontFamily,
+                icpNumber: config.icpNumber || siteConfig.icpNumber,
+                serviceTitleZh: config.serviceTitleZh || siteConfig.serviceTitleZh,
+                serviceTitleEn: config.serviceTitleEn || siteConfig.serviceTitleEn,
+                serviceSubtitleZh: config.serviceSubtitleZh || siteConfig.serviceSubtitleZh,
+                serviceSubtitleEn: config.serviceSubtitleEn || siteConfig.serviceSubtitleEn
+            };
+            
+            // 设置全局样式（强制生效）
+            document.documentElement.style.setProperty('--main-color', siteConfig.mainFontColor);
+            document.getElementById('dynamicStyle').textContent = `
+                :root {
+                    --main-color: ${siteConfig.mainFontColor} !important;
+                }
+                body {
+                    font-family: ${siteConfig.fontFamily};
+                }
+            `;
+            
+            // 更新公司名称
+            document.getElementById('companyName').textContent = currentLang === 'zh' ? siteConfig.companyNameZh : siteConfig.companyNameEn;
+            
+            // 更新ICP备案号
+            document.getElementById('copyrightText').textContent = lang[currentLang].copyrightPrefix + siteConfig.icpNumber;
+            
+            // 加载LOGO
+            const logoData = getStoredData(STORAGE_KEYS.logo);
+            if (logoData.imageUrl) {
+                document.getElementById('siteLogo').src = logoData.imageUrl;
+                document.getElementById('siteLogo').style.display = 'block';
+            }
+            
+            // 加载Banner
+            const bannerData = getStoredData(STORAGE_KEYS.banner);
+            if (bannerData.imageUrl) {
+                document.querySelector('.banner').style.background = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${bannerData.imageUrl})`;
+                document.querySelector('.banner').style.backgroundSize = 'cover';
+                document.querySelector('.banner').style.backgroundPosition = 'center';
+            }
+            
+            // 加载关于我们
+            const aboutData = getStoredData(STORAGE_KEYS.about);
+            if (aboutData.title_zh) {
+                document.getElementById('aboutTitle').textContent = currentLang === 'zh' ? aboutData.title_zh : aboutData.title_en;
+                document.getElementById('aboutDesc').textContent = currentLang === 'zh' ? aboutData.desc_zh : aboutData.desc_en;
+                document.getElementById('aboutContent').textContent = currentLang === 'zh' ? aboutData.content_zh : aboutData.content_en;
+            }
+            
+            // 加载联系信息
+            const contactData = getStoredData(STORAGE_KEYS.contact);
+            if (contactData.address_zh) {
+                document.getElementById('contactAddress').textContent = currentLang === 'zh' ? contactData.address_zh : contactData.address_en;
+                document.getElementById('contactPhone').textContent = contactData.phone || document.getElementById('contactPhone').textContent;
+                document.getElementById('contactEmail').textContent = contactData.email || document.getElementById('contactEmail').textContent;
+            }
+            
+            // 加载核心服务
+            renderServices();
+            
+            // 更新核心服务标题
+            document.getElementById('servicesTitle').textContent = currentLang === 'zh' ? siteConfig.serviceTitleZh : siteConfig.serviceTitleEn;
+            document.getElementById('servicesSubtitle').textContent = currentLang === 'zh' ? siteConfig.serviceSubtitleZh : siteConfig.serviceSubtitleEn;
+        }
+
+        // 切换语言
+        function switchLang(langCode) {
+            currentLang = langCode;
+            
+            // 更新语言按钮状态
+            document.getElementById('btnZh').classList.remove('active');
+            document.getElementById('btnEn').classList.remove('active');
+            document.getElementById('btn' + (langCode === 'zh' ? 'Zh' : 'En')).classList.add('active');
+            
+            // 更新页面文本
+            document.getElementById('navHome').textContent = lang[langCode].nav_home;
+            document.getElementById('navTracking').textContent = lang[langCode].nav_tracking;
+            document.getElementById('navServices').textContent = lang[langCode].nav_services;
+            document.getElementById('navAbout').textContent = lang[langCode].nav_about;
+            document.getElementById('navContact').textContent = lang[langCode].nav_contact;
+            
+            document.getElementById('bannerTitle').textContent = lang[langCode].bannerTitle;
+            document.getElementById('bannerSubtitle').textContent = lang[langCode].bannerSubtitle;
+            document.getElementById('bannerBtn').textContent = lang[langCode].bannerBtn;
+            
+            document.getElementById('aboutTitle').textContent = lang[langCode].aboutTitle;
+            document.getElementById('servicesTitle').textContent = lang[langCode].servicesTitle;
+            document.getElementById('servicesSubtitle').textContent = lang[langCode].servicesSubtitle;
+            
+            document.getElementById('trackingTitle').textContent = lang[langCode].trackingTitle;
+            document.getElementById('trackingSubtitle').textContent = lang[langCode].trackingSubtitle;
+            document.getElementById('waybillNo').placeholder = lang[langCode].trackPlaceholder;
+            document.getElementById('trackBtn').textContent = lang[langCode].trackBtn;
+            document.getElementById('loadingText').textContent = lang[langCode].loadingText;
+            document.getElementById('emptyText').textContent = lang[langCode].emptyText;
+            
+            document.getElementById('contactTitle').textContent = lang[langCode].contactTitle;
+            document.getElementById('contactSubtitle').textContent = lang[langCode].contactSubtitle;
+            document.getElementById('addressLabel').textContent = lang[langCode].addressLabel;
+            document.getElementById('phoneLabel').textContent = lang[langCode].phoneLabel;
+            document.getElementById('emailLabel').textContent = lang[langCode].emailLabel;
+            
+            document.getElementById('namePlaceholder').placeholder = lang[langCode].namePlaceholder;
+            document.getElementById('telPlaceholder').placeholder = lang[langCode].telPlaceholder;
+            document.getElementById('emailPlaceholder').placeholder = lang[langCode].emailPlaceholder;
+            document.getElementById('messagePlaceholder').placeholder = lang[langCode].messagePlaceholder;
+            document.getElementById('submitBtn').textContent = lang[langCode].submitBtn;
+            
+            document.getElementById('footerHome').textContent = lang[langCode].nav_home;
+            document.getElementById('footerTracking').textContent = lang[langCode].nav_tracking;
+            document.getElementById('footerServices').textContent = lang[langCode].nav_services;
+            document.getElementById('footerAbout').textContent = lang[langCode].nav_about;
+            document.getElementById('footerContact').textContent = lang[langCode].nav_contact;
+            
+            // 更新版权信息
+            document.getElementById('copyrightText').textContent = lang[langCode].copyrightPrefix + siteConfig.icpNumber;
+            
+            // 重新加载配置
+            loadSiteConfig();
+        }
+
+        // 渲染核心服务
+        function renderServices() {
+            const services = getStoredData(STORAGE_KEYS.services);
+            const serviceCards = document.getElementById('serviceCards');
+            serviceCards.innerHTML = '';
+            
+            // 默认服务
+            const defaultServices = [
+                {
+                    name_zh: "国际海运",
+                    name_en: "International Sea Freight",
+                    icon: "",
+                    desc_zh: "整柜/拼箱海运服务，覆盖全球主要港口",
+                    desc_en: "FCL/LCL sea freight services covering major ports worldwide"
+                },
+                {
+                    name_zh: "国际空运",
+                    name_en: "International Air Freight",
+                    icon: "",
+                    desc_zh: "全球空运专线，高效快捷",
+                    desc_en: "Global air freight lines, efficient and fast"
+                },
+                {
+                    name_zh: "国际快递",
+                    name_en: "International Express",
+                    icon: "",
+                    desc_zh: "与DHL/UPS/FedEx等知名快递合作",
+                    desc_en: "Cooperating with DHL/UPS/FedEx and other well-known couriers"
+                },
+                {
+                    name_zh: "跨境电商物流",
+                    name_en: "Cross-border E-commerce",
+                    icon: "",
+                    desc_zh: "亚马逊FBA头程，海外仓一件代发",
+                    desc_en: "Amazon FBA first leg, overseas warehouse drop shipping"
+                }
+            ];
+            
+            const finalServices = services.length > 0 ? services : defaultServices;
+            
+            finalServices.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                
+                const name = currentLang === 'zh' ? service.name_zh : service.name_en;
+                const desc = currentLang === 'zh' ? service.desc_zh : service.desc_en;
+                
+                card.innerHTML = `
+                    ${service.icon ? `<img src="${service.icon}" alt="${name}">` : '<i class="fas fa-truck"></i>'}
+                    <h3>${name}</h3>
+                    <p>${desc}</p>
+                `;
+                
+                serviceCards.appendChild(card);
+            });
+        }
+
+        // 轨迹查询
+        function trackShipment(event) {
+            event.preventDefault();
+            
+            const waybillNo = document.getElementById('waybillNo').value.trim();
+            const loading = document.getElementById('loading');
+            const emptyResult = document.getElementById('emptyResult');
+            const trackResult = document.getElementById('trackResult');
+            
+            // 显示加载状态
+            loading.style.display = 'block';
+            emptyResult.style.display = 'none';
+            trackResult.style.display = 'none';
+            
+            // 模拟查询延迟
+            setTimeout(() => {
+                loading.style.display = 'none';
+                const tracks = getStoredData(STORAGE_KEYS.tracks);
+                
+                if (tracks[waybillNo]) {
+                    // 显示查询结果
+                    trackResult.style.display = 'block';
+                    document.getElementById('resultWaybillNo').textContent = currentLang === 'zh' ? `运单号：${waybillNo}` : `Tracking No: ${waybillNo}`;
+                    document.getElementById('resultStatus').textContent = tracks[waybillNo].status;
+                    
+                    // 渲染时间线
+                    const timelineContainer = document.getElementById('timelineContainer');
+                    timelineContainer.innerHTML = '';
+                    
+                    tracks[waybillNo].list.forEach(item => {
+                        const timelineItem = document.createElement('div');
+                        timelineItem.className = `timeline-item ${item.active ? 'active' : ''}`;
+                        timelineItem.innerHTML = `
+                            <div class="time">${item.time}</div>
+                            <div class="desc">${item.desc}</div>
+                        `;
+                        timelineContainer.appendChild(timelineItem);
+                    });
+                } else {
+                    // 显示无结果
+                    emptyResult.style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        // 提交留言功能
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const name = document.getElementById('namePlaceholder').value.trim();
+            const phone = document.getElementById('telPlaceholder').value.trim();
+            const email = document.getElementById('emailPlaceholder').value.trim();
+            const message = document.getElementById('messagePlaceholder').value.trim();
+            
+            if (!name || !phone) {
+                alert(currentLang === 'zh' ? '姓名和电话不能为空！' : 'Name and phone cannot be empty!');
+                return;
+            }
+            
+            const newMessage = {
+                name: name,
+                phone: phone,
+                email: email,
+                message: message,
+                submitTime: new Date().toLocaleString()
+            };
+            
+            let messages = getStoredData(STORAGE_KEYS.messages);
+            messages.push(newMessage);
+            
+            try {
+                localStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(messages));
+                alert(currentLang === 'zh' ? '提交成功！我们会尽快联系您。' : 'Submitted successfully! We will contact you soon.');
+                document.getElementById('namePlaceholder').value = '';
+                document.getElementById('telPlaceholder').value = '';
+                document.getElementById('emailPlaceholder').value = '';
+                document.getElementById('messagePlaceholder').value = '';
+            } catch (e) {
+                console.error('保存留言失败:', e);
+                alert(currentLang === 'zh' ? '提交失败，请重试！' : 'Submission failed, please try again!');
+            }
+        });
+
+        // 页面初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSiteConfig();
+            switchLang('en');
+        });
+    </script>
+</body>
+</html>
