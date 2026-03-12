@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 新增防缓存代码 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<!-- 版本号强制刷新 -->
+<script>
+    // 每次更新代码时，把版本号+1即可
+    const VERSION = "1.0.1";
+    if (localStorage.getItem('page_version') !== VERSION) {
+        localStorage.setItem('page_version', VERSION);
+        window.location.reload(true); // 强制刷新
+    }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shenzhen PrimeSol Supply Chain Co., Ltd.</title>
@@ -965,4 +978,5 @@
         });
     </script>
 </body>
+
 </html>
